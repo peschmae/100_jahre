@@ -2,7 +2,7 @@
 from __future__ import absolute_import, print_function
 
 from flask import Flask, render_template, request
-from .config import configure_app
+from registration_page.config import configure_app
 import pymysql.cursors
 
 
