@@ -4,13 +4,49 @@ body {
 
 section.content,
 footer {
-    width: 500px;
+    width: 1000px;
     margin: 0 auto;
 }
 
 section.content h1,
 footer {
     text-align: center;
+}
+
+section.content .banner{
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+section.content div.col-left,
+section.content div.col-right {
+    float: left;
+}
+
+section.content div.col-left {
+    width: 450px;
+    margin-right: 50px;
+}
+
+section.content div.col-left h2 {
+    margin: 0 auto;
+    width: 370px;
+}
+
+section.content div.col-right {
+    width: 500px;
+}
+
+section.content div.col-right h2 {
+    margin: 0 auto;
+    width: 140px;
+}
+
+section:after {
+    clear: both;
+    content: "";
+    display: block;
 }
 
 footer {

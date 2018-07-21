@@ -2,6 +2,9 @@
 {% block title %}Anmeldung{% endblock %}
 {% block page_title %}Mir hei &ouml;pis z fiire{% endblock %}
 {% block body %}
+    <div class="banner">
+        <img src="{{ url_for('static', filename='banner_small.jpg') }}" width="400" height="400">
+    </div>
     <p>
         Mir drü gschwüsteti (Simon, Katrin, Mathias) wärde das Jahr zäme 100 Jahr aut, u das wei mr mir euch aune
         fiire!<br>
@@ -10,22 +13,24 @@
         <br>
         Mir wärde Burger, Bier u süstigi Getränk für euch parat ha, aber bim Buffet si mr um jede Bitrag froh.<br>
     </p>
-    <div class="col-right">
+    <div class="col-left">
         <h2>Das het üses Buffet scho z biete</h2>
         <ul>
-            <li>TomMoz</li>
-            <li>Schoggimousse</li>
+            {% for meal in meals %}
+                <li>{{ meal.buffet }}</li>
+            {% endfor %}
         </ul>
     </div>
-    <div class="col-left">
+    <div class="col-right">
+        <h2>Ahmäudig</h2>
         <form action="registration-complete" method="post">
             <div class="row block">
                 <label for="name">Name*:</label>
                 <input type="text" name="name" id="name">
             </div>
             <div class="row block">
-                <label for="compansions">Begleitung*:</label>
-                <input type="number" name="compansions" id="compansions" step="1.0" placeholder="0">
+                <label for="companions">Begleitung*:</label>
+                <input type="number" name="companions" id="companions" step="1.0" placeholder="0">
             </div>
             <div class="row block">
                 <label for="buffet">Beitrag ans Buffet:</label>
