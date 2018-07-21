@@ -1,0 +1,38 @@
+body {
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+}
+
+section.content,
+footer {
+    width: 500px;
+    margin: 0 auto;
+}
+
+section.content h1,
+footer {
+    text-align: center;
+}
+
+footer {
+    padding-top: 20px;
+}
+
+form .block label {
+    width: 250px;
+    display: block;
+    float: left;
+}
+
+form .row {
+    padding-bottom: 5px;
+}
+
+form .row.actions input {
+    display: block;
+    margin: 0 auto;
+}
+
+form .services {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
