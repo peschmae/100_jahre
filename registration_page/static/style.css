@@ -38,6 +38,12 @@ section.content div.col-right {
     width: 500px;
 }
 
+section.content .participants {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 20%;
+}
+
 section.content div.col-right h2 {
     margin: 0 auto;
     width: 140px;

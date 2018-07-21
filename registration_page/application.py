@@ -63,3 +63,32 @@ def registration():
     finally:
         connection.close()
     return render_template('registration.html')
+
+
+@app.route("/list")
+def list():
+    # Connect to the database
+    connection = pymysql.connect(host=app.config['DATABASE_SERVER'],
+                                 user=app.config['DATABASE_USER'],
+                                 password=app.config['DATABASE_PASSWORD'],
+                                 db=app.config['DATABASE_NAME'],
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    app.logger.debug('list called')
+    # todo: fetch list of already commited meals
+    try:
+        with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT * FROM `registrations`"
+            cursor.execute(sql)
+            registrations = cursor.fetchall()
+
+            sql = "SELECT COUNT(name)+SUM(companions) as count FROM `registrations`"
+            cursor.execute(sql)
+            total = cursor.fetchone()
+    finally:
+        connection.close()
+    return render_template('list.html',
+                           registrations=registrations,
+                           total=total
+                           )
