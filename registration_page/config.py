@@ -14,7 +14,7 @@ class BaseConfig(object):
     DATABASE_NAME = os.environ.get('DATABASE_NAME', 'registration_form')
 
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    LOGGING_LOCATION = 'jira-batch-issue.log'
+    LOGGING_LOCATION = 'registration-form.log'
     LOGGING_LEVEL = logging.DEBUG
 
 

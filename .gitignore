@@ -1,3 +1,5 @@
 .idea/
 *.pyc
+
 registration_page/config.cfg
+registration-form.log
