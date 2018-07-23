@@ -20,6 +20,11 @@ section.content .banner{
     margin: 0 auto;
 }
 
+section.content div.intro ul.program {
+    text-align: center;
+    list-style-type: none;
+}
+
 section.content div.col-right,
 section.content div.col-left {
     text-align: center;
