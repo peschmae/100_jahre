@@ -1,10 +1,11 @@
 body {
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+    padding: 0 20px;
 }
 
 section.content,
 footer {
-    width: 1000px;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -19,23 +20,13 @@ section.content .banner{
     margin: 0 auto;
 }
 
-section.content div.col-left,
-section.content div.col-right {
-    float: left;
-}
-
+section.content div.col-right,
 section.content div.col-left {
-    width: 450px;
-    margin-right: 50px;
+    text-align: center;
 }
 
-section.content div.col-left h2 {
-    margin: 0 auto;
-    width: 370px;
-}
-
-section.content div.col-right {
-    width: 500px;
+section.content div.col-left ul {
+    text-align: left;
 }
 
 section.content .participants {
@@ -44,29 +35,26 @@ section.content .participants {
     width: 20%;
 }
 
-section.content div.col-right h2 {
-    margin: 0 auto;
-    width: 140px;
-}
-
 section:after {
     clear: both;
     content: "";
     display: block;
 }
 
-footer {
-    padding-top: 20px;
+form {
+    display: inline-block;
+}
+form .row {
+    padding-bottom: 5px;
+}
+
+form .row.block {
+    text-align: left;
+    padding-bottom: 5px;
 }
 
 form .block label {
-    width: 250px;
     display: block;
-    float: left;
-}
-
-form .row {
-    padding-bottom: 5px;
 }
 
 form .row.actions input {
@@ -74,7 +62,36 @@ form .row.actions input {
     margin: 0 auto;
 }
 
-form .services {
-    padding-top: 20px;
-    padding-bottom: 20px;
+@media (min-width: 992px) {
+    section.content,
+    footer {
+        width: 1000px;
+    }
+    section.content div.col-left,
+    section.content div.col-right {
+        float: left;
+    }
+
+    section.content div.col-left {
+        width: 450px;
+        margin-right: 50px;
+    }
+
+    section.content div.col-left h2 {
+        margin: 0 auto;
+        width: 370px;
+    }
+
+    section.content div.col-right {
+        width: 500px;
+    }
+
+    form .row.block {
+        float: left;
+    }
+
+    form .block label {
+        width: 250px;
+        float: left;
+    }
 }

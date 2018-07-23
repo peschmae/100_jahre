@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>{% block title %}Welcome{% endblock %} | 100 Jahre Geschwister Petermann</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	</head>
 	<body>
@@ -9,8 +10,5 @@
 			<h1>{% block page_title %}Hello World{% endblock %}</h1>
 			{% block body %}{% endblock %}
 		</section>
-		<footer>
-            Based on <a href="https://www.python.org/">Python</a>, <a href="http://flask.pocoo.org/">Flask</a>
-		</footer>
 	</body>
 </html>
