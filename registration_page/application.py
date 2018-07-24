@@ -20,7 +20,7 @@ def index():
                                  db=app.config['DATABASE_NAME'],
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    # todo: fetch list of already commited meals
+
     try:
         with connection.cursor() as cursor:
             # Read all records for people contributing to the buffet
