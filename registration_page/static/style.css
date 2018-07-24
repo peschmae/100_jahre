@@ -1,16 +1,25 @@
 body {
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
     padding: 0 20px;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-section.content,
-footer {
+h1, h2, h3 {
+    color: rgb(251, 0, 47);
+}
+
+a, a:hover, a:visited {
+    color: aqua;
+}
+
+section.content {
     width: 80%;
     margin: 0 auto;
 }
 
 section.content h1,
-footer {
+section.content div.col-left h2 {
     text-align: center;
 }
 
@@ -68,8 +77,10 @@ form .row.actions input {
 }
 
 @media (min-width: 992px) {
-    section.content,
-    footer {
+    a:hover {
+        text-decoration: none;
+    }
+    section.content {
         width: 1000px;
     }
     section.content div.col-left,
@@ -80,11 +91,6 @@ form .row.actions input {
     section.content div.col-left {
         width: 450px;
         margin-right: 50px;
-    }
-
-    section.content div.col-left h2 {
-        margin: 0 auto;
-        width: 370px;
     }
 
     section.content div.col-right {

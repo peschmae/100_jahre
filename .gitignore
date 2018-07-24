@@ -4,6 +4,9 @@
 registration_page/config.cfg
 registration-form.log
 
+env/
+venv/
+
 ### OSX ###
 # General
 .DS_Store
