@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from registration_page.config import configure_app
 import pymysql.cursors
 
@@ -12,6 +12,7 @@ configure_app(app)
 
 @app.route("/")
 def index():
+    app.logger.debug('index called')
     # Connect to the database
     connection = pymysql.connect(host=app.config['DATABASE_SERVER'],
                                  user=app.config['DATABASE_USER'],
@@ -19,11 +20,10 @@ def index():
                                  db=app.config['DATABASE_NAME'],
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    app.logger.debug('index called')
     # todo: fetch list of already commited meals
     try:
         with connection.cursor() as cursor:
-            # Read a single record
+            # Read all records for people contributing to the buffet
             sql = "SELECT `buffet` FROM `registrations` WHERE `buffet`<>''"
             cursor.execute(sql)
             meals = cursor.fetchall()
@@ -36,15 +36,18 @@ def index():
 
 @app.route("/registration-complete", methods=['POST'])
 def registration():
-    # Connect to the database
+    app.logger.debug('form posted')
+    if request.form.get('captcha') != '0':
+        app.logger.debug('welcome to my honeypot')
+        return redirect(url_for('index'))
+
     connection = pymysql.connect(host=app.config['DATABASE_SERVER'],
                                  user=app.config['DATABASE_USER'],
                                  password=app.config['DATABASE_PASSWORD'],
                                  db=app.config['DATABASE_NAME'],
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    app.logger.debug('form posted')
-    # todo: write all that shit into the database & maybe send an email
+
     try:
         with connection.cursor() as cursor:
             # Create a new record
@@ -57,8 +60,7 @@ def registration():
                                 )
                            )
 
-        # connection is not autocommit by default. So you must commit to save
-        # your changes.
+        # connection is not autocommit by default. So you must commit to save your changes
         connection.commit()
     finally:
         connection.close()
@@ -67,22 +69,23 @@ def registration():
 
 @app.route("/list")
 def list():
-    # Connect to the database
+    app.logger.debug('list called')
+
     connection = pymysql.connect(host=app.config['DATABASE_SERVER'],
                                  user=app.config['DATABASE_USER'],
                                  password=app.config['DATABASE_PASSWORD'],
                                  db=app.config['DATABASE_NAME'],
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
-    app.logger.debug('list called')
-    # todo: fetch list of already commited meals
+
     try:
         with connection.cursor() as cursor:
-            # Read a single record
+            # Read all records
             sql = "SELECT * FROM `registrations`"
             cursor.execute(sql)
             registrations = cursor.fetchall()
 
+            # Calculate total number of registrations
             sql = "SELECT COUNT(name)+SUM(companions) as count FROM `registrations`"
             cursor.execute(sql)
             total = cursor.fetchone()

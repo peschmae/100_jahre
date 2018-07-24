@@ -105,4 +105,8 @@ form .row.actions input {
         width: 250px;
         float: left;
     }
+
+    form .catch-me-if-you-can {
+        visibility: hidden;
+    }
 }
