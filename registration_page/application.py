@@ -38,7 +38,7 @@ def index():
 def registration():
     app.logger.debug('form posted')
     if request.form.get('captcha') != '0':
-        app.logger.debug('welcome to my honeypot')
+        app.logger.warning('welcome to my honeypot: {}'.format(request.form.get('name')))
         return redirect(url_for('index'))
 
     connection = pymysql.connect(host=app.config['DATABASE_SERVER'],
