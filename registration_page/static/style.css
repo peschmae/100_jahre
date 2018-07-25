@@ -107,6 +107,6 @@ form .row.actions input {
     }
 
     form .catch-me-if-you-can {
-        visibility: hidden;
+        display: none;
     }
 }
