@@ -76,6 +76,10 @@ form .row.actions input {
     margin: 0 auto;
 }
 
+form .catch-me-if-you-can {
+    visibility: hidden;
+}
+
 @media (min-width: 992px) {
     a:hover {
         text-decoration: none;
@@ -106,7 +110,4 @@ form .row.actions input {
         float: left;
     }
 
-    form .catch-me-if-you-can {
-        display: none;
-    }
 }
