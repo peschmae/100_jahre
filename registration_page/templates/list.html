@@ -3,7 +3,8 @@
 {% block page_title %}Die Lüt hei sech ahgmäudet{% endblock %}
 {% block body %}
     <p>
-        Totau ahmäudige: {{ total.count }}
+        Totau ahmäudige: {{ total.count }}<br>
+        Vegetarier: {{ vegetarians.count }}
     </p>
     {% for participant in registrations %}
         <div class="participants">

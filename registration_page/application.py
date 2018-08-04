@@ -89,9 +89,15 @@ def list():
             sql = "SELECT COUNT(name)+SUM(companions) as count FROM `registrations`"
             cursor.execute(sql)
             total = cursor.fetchone()
+
+            # Calculate total number of registrations
+            sql = "SELECT SUM(vegetarian) as count FROM `registrations`"
+            cursor.execute(sql)
+            vegetarians = cursor.fetchone()
     finally:
         connection.close()
     return render_template('list.html',
                            registrations=registrations,
-                           total=total
+                           total=total,
+                           vegetarians=vegetarians
                            )
